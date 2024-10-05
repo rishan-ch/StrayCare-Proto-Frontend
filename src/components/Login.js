@@ -1,11 +1,18 @@
+import axios from "axios";
 import { useState } from "react"
 export default function Login(){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault();
+
+        let res = await axios.post("http://localhost:8080/api/user/login",{email,password})
+
+        if(res.status===200){
+            console.log(res.data);
+        }
 
     }
 

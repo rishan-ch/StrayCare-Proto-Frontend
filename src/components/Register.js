@@ -11,7 +11,7 @@ export default function Register(){
         let user = {name, email, password}
 
         try{
-            let res = await axios.post("http://localhost:8080/api/addUser",user)
+            let res = await axios.post("http://localhost:8080/api/add",user)
 
             if(res.status === 200){
                 console.log("success")
