@@ -25,24 +25,22 @@ export default function Register(){
 
     }
     return(
-        <div>
-            <div>
-                <form action="" onSubmit={handleSubmit}>
-                    <div>
+            <div className="flex justify-center items-center section-min-height  ">
+                <form action="" onSubmit={handleSubmit} className="text-2xl w-1/4 bg-slate-500 p-10 flex flex-col gap-10">
+                    <div className="flex justify-between">
                         <label htmlFor="name">Name</label>
                         <input type="text" placeholder="Enter your name" onChange={e=> setName(e.target.value)}/>
                     </div>
-                    <div>
+                    <div className="flex justify-between">
                         <label htmlFor="email">Email</label>
                         <input type="email" placeholder="Enter your email" onChange={e=> setEmail(e.target.value)}/>
                     </div>
-                    <div>
+                    <div className="flex justify-between">
                         <label htmlFor="password">Password</label>
                         <input type="password" placeholder="Enter your password" onChange={e=> setPassword(e.target.value)}/>
                     </div>
                     <button type="submit">Register</button>
                 </form>
             </div>
-        </div>
     )
 }
