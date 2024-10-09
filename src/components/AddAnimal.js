@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+
 export default function AddAnimal(){
 
     const [name, setName] = useState('')
     const [breed, setBreed] = useState('')
     const [photo, setPhoto] = useState(null)
+    const navigate = useNavigate()
 
     async function handleSubmit(event){
         event.preventDefault();
@@ -19,6 +22,7 @@ export default function AddAnimal(){
 
             if(res.status === 200){
                 console.log("success")
+                navigate('/list')
             }else{
                 console.log("fail "+res.status)
             }

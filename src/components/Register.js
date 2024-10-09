@@ -1,20 +1,24 @@
 import axios from "axios";
 import { useState } from "react"
+import {  useNavigate } from "react-router-dom";
+
 export default function Register(){
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate();
 
     async function handleSubmit(event){
         event.preventDefault();
         let user = {name, email, password}
 
         try{
-            let res = await axios.post("http://localhost:8080/api/add",user)
+            let res = await axios.post("http://localhost:8080/api/user/add",user)
 
             if(res.status === 200){
                 console.log("success")
+                navigate('/login')
             }else{
                 console.log("fail "+res.status)
             }
