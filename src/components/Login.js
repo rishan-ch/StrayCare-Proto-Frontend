@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import login_photo from "../media/login-photo.jpg"
+import google_logo from "../media/google.png"
 export default function Login(){
 
     const [email, setEmail] = useState('')
@@ -15,6 +17,9 @@ export default function Login(){
 
             if(res.status===200){
                 console.log(res.data);
+                localStorage.setItem('token', res.data.jwtToken);
+                localStorage.setItem('email', res.data.email);
+                console.log(res.data.jwtToken);
                 navigate("/")
             }else{
                 // navigate("/login")

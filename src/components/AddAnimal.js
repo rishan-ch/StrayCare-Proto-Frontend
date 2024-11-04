@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddAnimal(){
 
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("email");
+
     const [name, setName] = useState('')
     const [breed, setBreed] = useState('')
     const [photo, setPhoto] = useState(null)
@@ -12,13 +15,26 @@ export default function AddAnimal(){
     async function handleSubmit(event){
         event.preventDefault();
 
+        
+
         const formdata = new FormData();
         formdata.append('name',name)
         formdata.append('breed',breed)
         formdata.append('photo',photo)
+        formdata.append('user',user)
+
+        console.log("Form Data:");
+for (const [key, value] of formdata.entries()) {
+    console.log(`${key}:`, value);
+}
+
 
         try{
-            let res = await axios.post("http://localhost:8080/api/dog/add",formdata)
+            const res = await axios.post("http://localhost:8080/api/dog/add", formdata, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              });
 
             if(res.status === 200){
                 console.log("success")
